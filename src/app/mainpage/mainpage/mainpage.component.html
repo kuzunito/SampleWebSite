@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movies</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="header">
+      <h1>Choose Your Movie!</h1>
+      <div>
+        <div class="watch">
+          <button routerLink="/watchlist">Watch List</button>
+        </div>
+        <mat-form-field>
+          <mat-label>Sort By:</mat-label>
+          <mat-select matNativeControl [formControl]="sortingControl">
+            <mat-option value="none">None</mat-option>
+            <mat-option value="title-asc">Title</mat-option>
+            <mat-option value="release-asc">Release Date</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="cont">
+      <div class="card" *ngFor="let movie of allMovies">
+        <div>
+          <div class="col">
+            <div class="col" (click)="clickMovie(movie)">
+              <img src="{{ movie.picture }}" alt="Movie Poster" class="imga" />
+            </div>
+          </div>
+          <div class="col">
+            <div class="col">
+              <h2>{{ movie.title }}</h2>
+              <p>Rating: {{ movie.rating }}</p>
+              <p>Duration: {{ movie.duration }}</p>
+              <p>Genre: {{ movie.genre }}</p>
+              <p>Released Date: {{ movie.released }}</p>
+              <!-- <button
+            id="{{ movie.id }}"
+            (click)="addToWatchList(movie, movie.id)"
+            [ngClass]="{ active: toggle }"
+          >
+          </button> -->
+              <!-- <input
+            class="btn"
+            (click)="addToWatchList(movie)"
+            type="button"
+            [ngClass]="status ? 'btn-danger' : 'btn-success'"
+            [value]="status ? '' : 'Add To Watch List'"
+          /> -->
+              <mat-button-toggle-group
+                name="{{ movie.title }}"
+                aria-label="Ingredients"
+                multiple
+              >
+                <mat-button-toggle
+                  value="{{ movie.id }}"
+                  (click)="addToWatchList(movie)"
+                  >Add to Watch List</mat-button-toggle
+                >
+              </mat-button-toggle-group>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <h1>Developed By: Jofer Fernandez</h1>
+    </footer>
+  </body>
+</html>

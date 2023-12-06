@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Watch List</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="header">
+      <h1>Choose Your Movie!</h1>
+      <div>
+        <div class="watch">
+          <button routerLink="/">Home</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="cont">
+      <img
+        *ngIf="!watchList?.length"
+        style="width: 200rem"
+        src="https://i.pinimg.com/736x/ae/8a/c2/ae8ac2fa217d23aadcc913989fcc34a2.jpg"
+        alt="Empty Poster"
+        class="img-fluid"
+      />
+      <div class="card" *ngFor="let list of watchList">
+        <div class="col" style="width: 18rem">
+          <img src="{{ list.picture }}" alt="Movie Poster" class="img-fluid" />
+        </div>
+        <div class="col">
+          <h2>{{ list.title }}</h2>
+          <p>Description: {{ list.description }}</p>
+          <p>Rating: {{ list.rating }}</p>
+          <p>Duration: {{ list.duration }}</p>
+          <p>Genre: {{ list.genre }}</p>
+          <p>Released Date: {{ list.released }}</p>
+
+          <input
+            (click)="removeToWatchList(list.id)"
+            type="button"
+            [ngClass]="status ? 'btn-danger' : 'btn-success'"
+            [value]="status ? '' : 'Remove to Watch List'"
+          />
+        </div>
+      </div>
+    </div>
+    <footer>
+      <h1>Developed By: Jofer Fernandez</h1>
+    </footer>
+  </body>
+</html>

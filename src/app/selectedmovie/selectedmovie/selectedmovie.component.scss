@@ -1,0 +1,40 @@
+.cont {
+  flex-wrap: wrap;
+  flex: auto;
+}
+.moviedeets {
+  flex-wrap: wrap;
+  flex: auto;
+}
+.pic {
+  width: 300px;
+  height: fit-content;
+}
+.details {
+  width: fit-content;
+  flex-wrap: wrap;
+  flex: content;
+}
+.vid {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cont {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: rgb(42, 49, 49);
+}
+.header {
+  height: 150px;
+  background-color: bisque;
+}
+.card {
+  margin: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: blanchedalmond;
+  // max-width:;
+}
